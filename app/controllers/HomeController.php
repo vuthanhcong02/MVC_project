@@ -6,7 +6,8 @@ class HomeController{
         $categoryModel = new Category();
         $categories = $categoryModel->getAllCategory();
         $productModel = new Product();
-        $trendy = $productModel->getAllTrendy();
+        $product_trendy = $productModel->getAllProductTrendy();
+        $product_new = $productModel->getAllProductNew();
         include 'app/views/home/index.php';
     }   
 }
