@@ -23,9 +23,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.php?controller=home&action=index" class="nav-item nav-link active">Home</a>
-                        <a href="index.php?controller=shop&action=index" class="nav-item nav-link">Shop</a>
-                        <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <a href="index.php?controller=home&action=index" class="nav-item nav-link <?php if(isset($_GET['controller']) && $_GET['controller'] == 'home' && isset($_GET['action']) && $_GET['action'] == 'index') echo 'active' ?>">Home</a>
+                        <a href="index.php?controller=shop&action=index" class="nav-item nav-link <?php if(isset($_GET['controller']) && $_GET['controller'] == 'shop' && isset($_GET['action']) && $_GET['action'] == 'index') echo 'active' ?>">Shop</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">

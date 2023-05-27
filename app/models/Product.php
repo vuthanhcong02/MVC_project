@@ -91,4 +91,10 @@ class Product {
         $product = $conn->pdo($sql,['id'=>$id])->fetch();
         return $product;
     }
+    public function getProductRelative($category_id,$id){
+        $conn = new DatabaseConnection();
+        $sql="SELECT * FROM product WHERE category_id=:category_id AND product.id !=:id";
+        $products = $conn->pdo($sql,['category_id'=>$category_id,'id'=>$id])->fetchAll();
+        return $products;
+    }
 }
