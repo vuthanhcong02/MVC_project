@@ -2,7 +2,7 @@
 require_once 'config/config.php';
 class DatabaseConnection
 {
-    private $pdo;
+    private $conn;
     private $type;
     private $server;
     private $db;
@@ -28,23 +28,23 @@ class DatabaseConnection
 
         $dsn = "$this->type:host=$this->server;dbname=$this->db;port=$this->port;charset=$this->charset"; // Create DSN
         try {
-            $this->pdo = new PDO($dsn, $this->username, $this->password, $options);  // Create PDO object
+            $this->conn = new PDO($dsn, $this->username, $this->password, $options);  // Create PDO object
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), $e->getCode()); // Re-throw exception
         }
     }
 
-    public function getPdo()
+    public function getConnetion()
     {
-        return $this->pdo;
+        return $this->conn;
     }
 
     public function pdo(string $sql, array $arguments = null)
     {
         if (!$arguments) {                   // If no arguments
-            return $this->pdo->query($sql);        // Run SQL and return PDOStatement object
+            return $this->conn->query($sql);        // Run SQL and return PDOStatement object
         }
-        $statement = $this->pdo->prepare($sql);    // If arguments prepare statement
+        $statement = $this->conn->prepare($sql);    // If arguments prepare statement
         $statement->execute($arguments);     // Execute statement
         return $statement;                   // Return PDOStatement object
     }
