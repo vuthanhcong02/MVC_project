@@ -99,11 +99,11 @@ class Product {
     }
     public function getProductByCategory($category_id){
         $database = new DatabaseConnection();
-        // $conn = $database->getConnection();
-        // if($conn){
+        $conn = $database->getConnection();
+        if($conn){
             $sql="SELECT * FROM product WHERE category_id=:category_id";
             $products = $database->pdo($sql,['category_id'=>$category_id])->fetchAll();
             return $products;
-        // }
+        }
     }
 }

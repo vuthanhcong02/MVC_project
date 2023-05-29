@@ -28,7 +28,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                                <a href="index.php?controller=cart&action=index" class="dropdown-item">Shopping Cart</a>
                                 <a href="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="p-3" style="max-width: 700px;">
                             <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                             <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                            <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                            <a href="index.php?controller=shop&action=index" class="btn btn-light py-2 px-3">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                         <div class="p-3" style="max-width: 700px;">
                             <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                             <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                            <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                            <a href="index.php?controller=shop&action=index" class="btn btn-light py-2 px-3">Shop Now</a>
                         </div>
                     </div>
                 </div>
