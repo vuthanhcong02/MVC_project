@@ -1,5 +1,6 @@
 <?php include 'public/layouts/header.php';?>
 <?php include 'public/layouts/navbar.php';?>
+<?php require_once 'helpers/PriceFormatter.php' ?>
 <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Shopping Cart</h1>
@@ -31,7 +32,7 @@
                             <td class="align-middle"><img src="public/img/<?php echo $item['image']; ?>" alt="" style="width: 50px;"><?php echo $item['name'];?></td>
                             <td class="align-middle"><?php echo $item['size']; ?></td>
                             <td class="align-middle"><?php echo $item['color']; ?></td>
-                            <td class="align-middle"><?php echo $item['price'];?></td>
+                            <td class="align-middle"><?php echo PriceFormatter::formatPrice($item['price'])?></td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
@@ -48,7 +49,7 @@
                                 </div>
                             </td>
 
-                            <td class="align-middle"><?php echo $item['price'] * $item['quantity'];?></td>
+                            <td class="align-middle"><?php echo PriceFormatter::formatPrice($item['price'] * $item['quantity']);?></td>
                             
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>

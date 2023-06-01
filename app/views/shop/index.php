@@ -1,7 +1,10 @@
 <?php
 include  'public/layouts/header.php';?>
-<?php include  'public/layouts/navbar.php';?>
-
+<?php include  'public/layouts/navbar.php';
+?>
+<?php 
+require_once 'helpers/PriceFormatter.php';
+?>
  <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
@@ -176,7 +179,7 @@ include  'public/layouts/header.php';?>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                     <h6 class="text-truncate mb-3"><?php echo $product['name']?></h6>
                                     <div class="d-flex justify-content-center">
-                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del><?php echo $product['price']?></del></h6>
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del><?php echo PriceFormatter::formatPrice($product['price'])?></del></h6>
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">

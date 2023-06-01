@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php require_once 'app/models/Cart.php';
+    $cartModel = new Cart();
+    $count = $cartModel->getTotalCartItems();
+?>
 <head>
     <meta charset="utf-8">
     <title>EShopper</title>
@@ -81,9 +84,9 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="" class="btn border">
+                <a href="index.php?controller=cart&action=index" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge"><?php echo $count;?></span>
                 </a>
             </div>
         </div>

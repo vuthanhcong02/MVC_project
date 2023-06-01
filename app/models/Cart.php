@@ -46,6 +46,14 @@ class Cart
             return [];
         }
     }
-
+    public function getTotalCartItems(){
+        if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])){
+            // Lấy số lượng từ session cart
+            $cartQuantity = count($_SESSION['cart']);
+            
+            // Sử dụng biến $cartQuantity theo nhu cầu của bạn
+            return  $cartQuantity;
+        } 
+    }
     // Các phương thức khác để cập nhật hoặc xóa sản phẩm trong giỏ hàng
 }

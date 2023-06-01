@@ -5,7 +5,7 @@
 
 <!-- Navbar End -->
 <?php include 'public/layouts/navbar_home.php'; ?>
-
+<?php require_once 'helpers/PriceFormatter.php' ?>
 <!-- Featured Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5 pb-3">
@@ -144,7 +144,7 @@
                         <h6 class="text-truncate mb-3"><?php echo $item['name'] ?></h6>
                         <div class="d-flex justify-content-center">
                             <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del><?php echo $item['price'] ?></del></h6>
+                            <h6 class="text-muted ml-2"><del><?php echo PriceFormatter::formatPrice($item['price']) ?></del></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
@@ -196,7 +196,7 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"><?php echo $item['name'] ?></h6>
                         <div class="d-flex justify-content-center">
-                            <h6><?php echo $item['price'] ?></h6>
+                            <h6><?php echo PriceFormatter::formatPrice($item['price']) ?></h6>
                             <h6 class="text-muted ml-2"><del>$123.00</del></h6>
                         </div>
                     </div>
