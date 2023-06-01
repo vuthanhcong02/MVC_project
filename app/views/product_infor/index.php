@@ -1,7 +1,7 @@
 <?php include 'public/layouts/header.php' ?>
 <?php include 'public/layouts/navbar.php' ?>
 <div class="container-fluid py-5">
-    <form action="index.php?controller=cart&action=add" method="post">
+    <form action="index.php?controller=cart&action=add" method="post" id="myForm">
         <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
         <input type="hidden" name="name" value="<?php echo $product['name'] ?>">
         <input type="hidden" name="price" value="<?php echo $product['price'] ?>">
@@ -39,25 +39,25 @@
                 <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                    <!-- <form> -->
+                    <!-- <form action="index.php?controller=cart&action=add" method="post" id="sizeForm"> -->
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-1" name="size" value="XS">
+                        <input type="radio" class="custom-control-input" id="size-1" name="size" value="XS" required>
                         <label class="custom-control-label" for="size-1">XS</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-2" name="size" value="S">
+                        <input type="radio" class="custom-control-input" id="size-2" name="size" value="S" required>
                         <label class="custom-control-label" for="size-2">S</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-3" name="size" value="M">
+                        <input type="radio" class="custom-control-input" id="size-3" name="size" value="M" required>
                         <label class="custom-control-label" for="size-3">M</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-4" name="size" value="L">
+                        <input type="radio" class="custom-control-input" id="size-4" name="size" value="L" required>
                         <label class="custom-control-label" for="size-4">L</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="size-5" name="size" value="XL">
+                        <input type="radio" class="custom-control-input" id="size-5" name="size" value="XL" required>
                         <label class="custom-control-label" for="size-5">XL</label>
                     </div>
                     <!-- </form> -->
@@ -66,23 +66,23 @@
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <!-- <form> -->
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="color-1" name="color" value="Black">
+                        <input type="radio" class="custom-control-input" id="color-1" name="color" value="Black" required>
                         <label class="custom-control-label" for="color-1">Black</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="color-2" name="color" value="White">
+                        <input type="radio" class="custom-control-input" id="color-2" name="color" value="White" required>
                         <label class="custom-control-label" for="color-2">White</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="color-3" name="color" value="Red">
+                        <input type="radio" class="custom-control-input" id="color-3" name="color" value="Red"  required>
                         <label class="custom-control-label" for="color-3">Red</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="color-4" name="color" value="Blue">
+                        <input type="radio" class="custom-control-input" id="color-4" name="color" value="Blue" required>
                         <label class="custom-control-label" for="color-4">Blue</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" id="color-5" name="color" value="Green">
+                        <input type="radio" class="custom-control-input" id="color-5" name="color" value="Green" required>
                         <label class="custom-control-label" for="color-5">Green</label>
                     </div>
                     <!-- </form> -->

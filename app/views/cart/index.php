@@ -53,6 +53,9 @@
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <?php } ?>
+                        <tr>
+                        <button class="btn btn-sm btn-primary mb-3"><a href="index.php?controller=shop&action=index" class="text-dark text-decoration-none">Shop Continue</a></button>
+                        </tr>
                     </tbody>
                 </table>
             </div>
