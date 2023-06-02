@@ -55,5 +55,27 @@ class Cart
             return  $cartQuantity;
         } 
     }
+    public function getSubTotal(){
+        if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])){
+            $subtotal = 0; // Biến để lưu tổng tiền
+            
+            foreach($_SESSION['cart'] as $product){
+                // Lấy giá tiền và số lượng từ mỗi sản phẩm trong giỏ hàng
+                $price = $product['price'];
+                $quantity = $product['quantity'];
+                
+                // Tính tổng giá tiền của sản phẩm (giá x số lượng)
+                $productTotal = $price * $quantity;
+                
+                // Cộng tổng giá tiền của sản phẩm vào tổng tiền của giỏ hàng
+                $subtotal += $productTotal;
+            }
+            
+            // Sử dụng biến $subtotal theo nhu cầu của bạn
+            return $subtotal;
+        } else {
+            return 0;
+        }
+    }
     // Các phương thức khác để cập nhật hoặc xóa sản phẩm trong giỏ hàng
 }
