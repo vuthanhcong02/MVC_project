@@ -1,5 +1,6 @@
 <?php
 require_once 'app/models/Cart.php';
+
 class CartController{
     public function index(){
         $cartModel = new Cart();
@@ -27,5 +28,13 @@ class CartController{
             // header("location: index.php?controller=product&action=detail");
             echo "Vui lòng chọn size và màu sắc";
         }
+    }
+    public function del(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $cartModel = new Cart();
+            $cartModel->removeItemFromCart($id);
+        }
+       header('location: index.php?controller=cart&action=index');
     }
 }

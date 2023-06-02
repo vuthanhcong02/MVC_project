@@ -56,7 +56,7 @@
 
                             <td class="align-middle"><?php echo PriceFormatter::formatPrice($item['price'] * $item['quantity']);?></td>
                             
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
+                            <td class="align-middle"><a href="index.php?controller=cart&action=del&id=<?php echo $item['productId']?>" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></a></td>
                         </tr>
                         <?php } ?>
                         <tr>

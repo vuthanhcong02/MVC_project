@@ -77,5 +77,19 @@ class Cart
             return 0;
         }
     }
+    function removeItemFromCart($productId) {
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $key => $item) {
+                if ($item['productId'] == $productId) {
+                    unset($_SESSION['cart'][$key]);
+                    $_SESSION['cart'] = array_values($_SESSION['cart']);
+                    session_write_close();
+                    break;
+                }
+            }
+            // Sắp xếp lại các khóa của mảng giỏ hàng
+           
+        }
+    }
     // Các phương thức khác để cập nhật hoặc xóa sản phẩm trong giỏ hàng
 }
