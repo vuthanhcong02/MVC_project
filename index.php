@@ -17,8 +17,10 @@ if (file_exists($controllerFile)) {
     // Kiểm tra xem action có tồn tại trong controller hay không
     if (method_exists($controllerObj, $action)) {
         // Nếu tồn tại, gọi action tương ứng trong controller
-        $controllerObj->$action();
-    } else {
+         $controllerObj->$action();
+    }
+    
+    else {
         // Nếu action không tồn tại, xử lý lỗi
         echo 'Action không tồn tại.';
     }
