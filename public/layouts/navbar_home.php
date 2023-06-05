@@ -29,7 +29,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="index.php?controller=cart&action=index" class="dropdown-item">Shopping Cart</a>
-                                <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                <a href="index.php?controller=checkout&action=index" class="dropdown-item">Checkout</a>
                             </div>
                         </div>
                         <a href="index.php?controller=contact&action=index" class="nav-item nav-link">Contact</a>
