@@ -8,9 +8,9 @@ class CartController{
         $categoryModel = new Category();
         $categories = $categoryModel->getAllCategory();
         include 'app/views/cart/index.php';
-        echo '<pre>';
-        print_r($carts);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($carts);
+        // echo '</pre>';
     }
     public function add(){
         // include 'app/views/cart/index.php';
@@ -27,7 +27,7 @@ class CartController{
             $cartModel->addToCart($id, $name, $price,$quantity, $size, $color, $image);
             $carts= $cartModel->getCartItems();
        
-            include 'app/views/cart/index.php';
+            header('Location: index.php?controller=cart&action=index');
        
         }
         

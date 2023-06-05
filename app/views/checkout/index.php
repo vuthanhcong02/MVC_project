@@ -1,5 +1,6 @@
 <?php include 'public/layouts/header.php' ?>
 <?php include 'public/layouts/navbar.php' ?>
+<?php require_once 'helpers/PriceFormatter.php' ?>
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Checkout</h1>
@@ -79,32 +80,32 @@
                 </div>
                 <div class="card-body">
                     <h5 class="font-weight-medium mb-3">Products</h5>
-                    <div class="d-flex justify-content-between">
-                        <p>Colorful Stylish Shirt 1</p>
-                        <p>$150</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p>Colorful Stylish Shirt 2</p>
-                        <p>$150</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p>Colorful Stylish Shirt 3</p>
-                        <p>$150</p>
-                    </div>
+                    <?php
+                    if (!empty($carts)) {
+                        foreach ($carts as $cart) : ?>
+                            <div class="d-flex justify-content-between row">
+                                <p class="col-5"><?= $cart['name'] ?></p>
+                                <p class="col-2"><?= $cart['quantity'] ?> x</p>
+                                <p class="col-3"><?= PriceFormatter::formatPrice($cart['price']) ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php } else {
+                        echo '<p>No product</p>';
+                    } ?>
                     <hr class="mt-0">
                     <div class="d-flex justify-content-between mb-3 pt-1">
                         <h6 class="font-weight-medium">Subtotal</h6>
-                        <h6 class="font-weight-medium">$150</h6>
+                        <h6 class="font-weight-medium"><?php echo ($subTotal)?PriceFormatter::formatPrice($subTotal):'$0' ?></h6>
                     </div>
                     <div class="d-flex justify-content-between">
                         <h6 class="font-weight-medium">Shipping</h6>
-                        <h6 class="font-weight-medium">$10</h6>
+                        <h6 class="font-weight-medium">$5</h6>
                     </div>
                 </div>
                 <div class="card-footer border-secondary bg-transparent">
                     <div class="d-flex justify-content-between mt-2">
                         <h5 class="font-weight-bold">Total</h5>
-                        <h5 class="font-weight-bold">$160</h5>
+                        <h5 class="font-weight-bold"><?php echo ($subTotal + 5)?PriceFormatter::formatPrice($subTotal + 5):'$0' ?></h5>
                     </div>
                 </div>
             </div>

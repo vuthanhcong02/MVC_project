@@ -92,7 +92,7 @@ $subTotal = $cartModel->getSubTotal();
                         <h5 class="font-weight-bold">Total</h5>
                         <h5 class="font-weight-bold"><?php echo PriceFormatter::formatPrice($subTotal + 5); ?></h5>
                     </div>
-                    <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                    <a href="index.php?controller=checkout&action=index" class="text-decoration-none"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
                 </div>
             </div>
         </div>
