@@ -86,7 +86,7 @@
                 </a>
                 <a href="index.php?controller=cart&action=index" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge"><?php echo $count;?></span>
+                    <span class="badge"><?php echo (!empty($count)) ? $count : '0';?></span>
                 </a>
             </div>
         </div>

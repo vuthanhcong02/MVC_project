@@ -33,7 +33,7 @@
                                 <a href="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="index.php?controller=contact&action=index" class="nav-item nav-link">Contact</a>
                     </div>
 
                     <div class="navbar-nav ml-auto py-0">

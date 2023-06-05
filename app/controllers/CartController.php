@@ -1,11 +1,16 @@
 <?php
 require_once 'app/models/Cart.php';
-
+require_once 'app/models/Category.php';
 class CartController{
     public function index(){
         $cartModel = new Cart();
         $carts = $cartModel->getCartItems();
+        $categoryModel = new Category();
+        $categories = $categoryModel->getAllCategory();
         include 'app/views/cart/index.php';
+        echo '<pre>';
+        print_r($carts);
+        echo '</pre>';
     }
     public function add(){
         // include 'app/views/cart/index.php';
@@ -21,13 +26,16 @@ class CartController{
             $cartModel = new Cart();
             $cartModel->addToCart($id, $name, $price,$quantity, $size, $color, $image);
             $carts= $cartModel->getCartItems();
-            
+       
             include 'app/views/cart/index.php';
+       
         }
+        
         else{
             // header("location: index.php?controller=product&action=detail");
             echo "Vui lòng chọn size và màu sắc";
         }
+     
     }
     public function del(){
         if(isset($_GET['id'])){
@@ -35,6 +43,8 @@ class CartController{
             $cartModel = new Cart();
             $cartModel->removeItemFromCart($id);
         }
+        
        header('location: index.php?controller=cart&action=index');
     }
+
 }
