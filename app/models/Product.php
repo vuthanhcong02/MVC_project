@@ -110,8 +110,10 @@ class Product {
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
         if ($conn) {
-            $sql = "SELECT * FROM product JOIN category ON product.category_id = category.id 
-                    WHERE product.name LIKE CONCAT('%', :keyword, '%') OR category.name LIKE CONCAT('%', :keyword1, '%')";
+            $sql = "SELECT product.id, product.name, product.image, product.price,category.name
+            FROM product
+            JOIN category ON product.category_id = category.id
+            WHERE product.name LIKE CONCAT('%', :keyword, '%') OR category.name LIKE CONCAT('%', :keyword1, '%')";
             $products_search = $database->pdo($sql, ['keyword' => $keyword,'keyword1' => $keyword])->fetchAll();
             return $products_search;
         }        

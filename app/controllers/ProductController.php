@@ -12,6 +12,7 @@ class ProductController{
         $categoryModel = new Category();
         $categories = $categoryModel->getAllCategory();
         include 'app/views/product_infor/index.php';
+      
     }
 
 }

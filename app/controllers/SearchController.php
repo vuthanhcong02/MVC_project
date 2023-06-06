@@ -1,30 +1,24 @@
 <?php
 require_once 'app/models/Product.php';
 require_once 'app/models/Category.php';
-
+require_once 'app/models/Cart.php';
 class SearchController{
     public function search(){
-        // header ('Location: index.php?controller=product&action=index');
+       $categoryModel = new Category();
+        $categories = $categoryModel->getAllCategory();
         $search =$_POST['keyword'];
-    
+        $productModel = new Product();
+        $products_search = $productModel->searchProduct($search);
+        include 'app/views/shop/index.php';
+    }
+    public function detailProductSearch(){
+        $id = $_GET['id'];
         $categoryModel = new Category();
         $categories = $categoryModel->getAllCategory();
         $productModel = new Product();
-        // $products_search = $productModel->searchProduct($search);
-       
-        // if(isset($_POST['keyword'])){
-        //     $products_search = $productModel->searchProduct($search);
-        //     $id=$_GET['id'];
-        //     $product = $productModel->getProductById($id);
-        //     $category_id = $product['category_id'];
-        //     $productRelative = $productModel->getProductRelative($category_id,$id);
-        //     include 'app/views/shop/index.php';
-
-        // }
-        // else{
-        //     $products = $productModel->getAllProduct();  
-        //     include 'app/views/shop/index.php';
-        // }
-        // header ('Location: index.php?controller=shop&action=index');
+        $product = $productModel->getProductById($id);
+        $category_id = $product['category_id'];
+        $productRelative = $productModel->getProductRelative($category_id,$id);
+        include 'app/views/product_infor/index.php';
     }
 }
