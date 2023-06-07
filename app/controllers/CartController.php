@@ -46,5 +46,27 @@ class CartController{
         
        header('location: index.php?controller=cart&action=index');
     }
-
+    public function checkout(){
+        if(($_SERVER['REQUEST_METHOD'] == 'POST')){
+            if(isset($_POST['fullname'])&&isset($_POST['address'])&&isset($_POST['phone'])&&isset($_POST['email'])){
+                $fullname = $_POST['fullname'];
+                $address = $_POST['address'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
+                $date = date('Y-m-d H:i:s');
+                $note = $_POST['note'];
+                $cartModel = new Cart();
+                $orderId = $cartModel->createOrder($fullname, $email, $phone, $address, $note,$date);
+            }
+            $carts = $cartModel->getCartItems();
+            foreach ($carts as $item) {
+                $productId = $item['productId'];
+                $quantity = $item['quantity'];
+                $price = $item['price'];
+                $size= $item['size'];
+                $cartModel->createOrderDetail($orderId, $productId, $size,$quantity,$price);
+            }
+            unset($_SESSION['cart']);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'database/Connect.php';
 class Cart
 {
     public function addToCart($productId, $name, $price, $quantity, $size, $color, $image)
@@ -92,4 +93,26 @@ class Cart
         }
     }
     // Các phương thức khác để cập nhật hoặc xóa sản phẩm trong giỏ hàng
+    public function createOrder($fullname, $email, $phone, $address, $note,$date){
+        $database = new DatabaseConnection();
+        $conn = $database->getConnection();
+        if($conn){
+            $sql = "INSERT INTO hoa_don(fullname, email, phone, dia_chi_gh, note, ngay_lam_hd) 
+                VALUES(:fullname, :email, :phone, :address, :note, :date)";
+            $database->pdo($sql,['fullname'=>$fullname, 'email'=>$email, 'phone'=>$phone, 'address'=>$address, 'note'=>$note, 'date'=>$date]);
+            $orderId = $conn->lastInsertId();
+            return $orderId;
+        }
+    }
+    public function createOrderDetail($orderId, $productId, $size,$quantity,$price){ {
+        // Lưu thông tin chi tiết hóa đơn vào bảng "Chi tiết hóa đơn"
+        $database = new DatabaseConnection();
+        $conn = $database->getConnection();
+        if($conn){
+            $sql = "INSERT INTO chi_tiet_hoa_don(id_hoadon,ma_sp, size, so_luong, don_gia) 
+                VALUES(:id_hoadon, :ma_sp, :size, :quantity, :price)";
+            $database->pdo($sql,['id_hoadon'=>$orderId, 'ma_sp'=>$productId, 'size'=>$size, 'quantity'=>$quantity, 'price'=>$price]);
+        }
+      }
+    }
 }
