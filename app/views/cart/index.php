@@ -2,7 +2,7 @@
 <?php include 'public/layouts/navbar.php'; ?>
 <?php
 require_once 'helpers/PriceFormatter.php';
-require_once 'app/models/Cart.php';
+require_once 'app/models/user/Cart.php';
 $cartModel = new Cart();
 $subTotal = $cartModel->getSubTotal();
 ?>

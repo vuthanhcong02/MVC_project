@@ -1,6 +1,6 @@
 <?php
-require_once 'app/models/Category.php';
-require_once 'app/models/Product.php';
+require_once 'app/models/user/Category.php';
+require_once 'app/models/user/Product.php';
 class HomeController{
     public function index(){
         $categoryModel = new Category();

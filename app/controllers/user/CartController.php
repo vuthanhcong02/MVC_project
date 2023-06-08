@@ -1,6 +1,6 @@
 <?php
-require_once 'app/models/Cart.php';
-require_once 'app/models/Category.php';
+require_once 'app/models/user/Cart.php';
+require_once 'app/models/user/Category.php';
 class CartController{
     public function index(){
         $cartModel = new Cart();

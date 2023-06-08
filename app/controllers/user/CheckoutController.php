@@ -1,6 +1,6 @@
 <?php
-require_once 'app/models/Category.php';
-require_once 'app/models/Cart.php';
+require_once 'app/models/user/Category.php';
+require_once 'app/models/user/Cart.php';
 class CheckoutController{
     public function index(){
         $categoryModel = new Category();

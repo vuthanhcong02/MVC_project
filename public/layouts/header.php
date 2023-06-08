@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require_once 'app/models/Cart.php';
+<?php require_once 'app/models/user/Cart.php';
     $cartModel = new Cart();
     $count = $cartModel->getTotalCartItems();
 ?>

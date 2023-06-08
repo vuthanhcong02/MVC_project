@@ -1,7 +1,7 @@
 <?php
-require_once 'app/models/Product.php';
-require_once 'app/models/Category.php';
-require_once 'app/models/Cart.php';
+require_once 'app/models/user/Product.php';
+require_once 'app/models/user/Category.php';
+require_once 'app/models/user/Cart.php';
 class SearchController{
     public function search(){
        $categoryModel = new Category();

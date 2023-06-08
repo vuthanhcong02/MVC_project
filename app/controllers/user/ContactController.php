@@ -1,5 +1,5 @@
 <?php
-require_once 'app/models/Category.php';
+require_once 'app/models/user/Category.php';
 class ContactController{
     public function index (){
         $categoryModel = new Category();
