@@ -1,5 +1,5 @@
-<?php include 'public/layouts/header.php' ?>
-<?php include 'public/layouts/navbar.php' ?>
+<?php include 'public/layouts/user/header.php' ?>
+<?php include 'public/layouts/user/navbar.php' ?>
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Contact Us</h1>
@@ -64,4 +64,4 @@
         </div>
     </div>
 </div>
-<?php include 'public/layouts/footer.php' ?>
+<?php include 'public/layouts/user/footer.php' ?>

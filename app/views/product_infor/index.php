@@ -1,5 +1,5 @@
-<?php include 'public/layouts/header.php' ?>
-<?php include 'public/layouts/navbar.php' ?>
+<?php include 'public/layouts/user/header.php' ?>
+<?php include 'public/layouts/user/navbar.php' ?>
 <div class="container-fluid py-5">
     <form action="index.php?controller=cart&action=add" method="post" id="myForm">
         <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
@@ -262,4 +262,4 @@
     </div>
 </div>
 
-<?php include 'public/layouts/footer.php' ?>
+<?php include 'public/layouts/user/footer.php' ?>

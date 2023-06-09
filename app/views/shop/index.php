@@ -1,6 +1,6 @@
 <?php
-include  'public/layouts/header.php';?>
-<?php include  'public/layouts/navbar.php';
+include  'public/layouts/user/header.php';?>
+<?php include  'public/layouts/user/navbar.php';
 ?>
 <?php 
 require_once 'helpers/PriceFormatter.php';
@@ -243,4 +243,4 @@ require_once 'helpers/PriceFormatter.php';
         </div>
     </div>
 
-<?php include 'public/layouts/footer.php'; ?>
+<?php include 'public/layouts/user/footer.php'; ?>

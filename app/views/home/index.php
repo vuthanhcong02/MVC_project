@@ -1,10 +1,10 @@
 <!-- Topbar End -->
-<?php include 'public/layouts/header.php'; ?>
+<?php include 'public/layouts/user/header.php'; ?>
 
 <!-- Navbar Start -->
 
 <!-- Navbar End -->
-<?php include 'public/layouts/navbar_home.php'; ?>
+<?php include 'public/layouts/user/navbar_home.php'; ?>
 <?php require_once 'helpers/PriceFormatter.php' ?>
 <!-- Featured Start -->
 <div class="container-fluid pt-5">
@@ -218,4 +218,4 @@
 
 
 <!-- Footer Start -->
-<?php include 'public/layouts/footer.php' ?>
+<?php include 'public/layouts/user/footer.php' ?>

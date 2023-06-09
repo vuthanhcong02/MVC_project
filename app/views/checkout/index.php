@@ -1,5 +1,5 @@
-<?php include 'public/layouts/header.php' ?>
-<?php include 'public/layouts/navbar.php' ?>
+<?php include 'public/layouts/user/header.php' ?>
+<?php include 'public/layouts/user/navbar.php' ?>
 <?php require_once 'helpers/PriceFormatter.php' ?>
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -151,4 +151,4 @@
         </div>
     </form>
 </div>
-<?php include 'public/layouts/footer.php' ?>
+<?php include 'public/layouts/user/footer.php' ?>
