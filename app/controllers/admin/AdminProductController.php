@@ -31,4 +31,40 @@ class AdminProductController{
             header('location:index.php?controller=adminproduct&action=index');
         }
     }
+    public function edit(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $productModelAdmin = new Product();
+            $product = $productModelAdmin->getProductById($id);
+            $categoryModelUser= new Category();
+            $categories = $categoryModelUser->getAllCategory();
+            $productStatusModel = new ProductStatus();
+            $statuses = $productStatusModel->getAllProductStatus();
+            include 'app/views/admin/product_Manager/edit.php';
+
+       }
+    }
+    public function update(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $id = $_POST['id'];
+            $name = $_POST['name_product'];
+            $image = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $price = $_POST['price'];
+            $description = $_POST['description'];
+            $category_id = $_POST['category_id'];
+            $status_id = $_POST['status_id'];
+            $productModelAdmin = new Product();
+            $productModelAdmin->updateProduct($id,$name,$image,$price,$description,$category_id,$status_id);
+            header('location:index.php?controller=adminproduct&action=index');
+        }
+    }
+    public function delete(){
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $productModelAdmin = new Product();
+            $productModelAdmin->deleteProduct($id);
+            header('location:index.php?controller=adminproduct&action=index');
+        }
+    }
 }    

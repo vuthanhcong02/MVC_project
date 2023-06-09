@@ -20,28 +20,33 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-            if(isset($products)){
-                foreach ($products as $product){?>
-            <tr>
-                <th scope="row" class="text-center"><?php echo $product['id'] ?></th>
-                <th scope="row" class="text-center"><?php echo $product['name'] ?></th>
-                <td class="text-center">
-                    <img src="public/img/<?php echo $product['image'] ?>" alt="" height="100px" style="object-fit: cover"/>
-                </td>
-                <td class="text-center"><?php echo $product['price'] ?></td>
-                <td class="text-center"><?php echo $product['category'] ?></td>
-                <td class="text-center"><?php echo $product['description'] ?></td>
-                <td class="text-center"><?php echo $product['status'] ?></td>
-                <td class="text-center">
-                    <a><i class="fa fa-edit"></i></a>
-                </td>
-                <td class="text-center">
-                    <a><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-            
-            <?php }}else{
+            <?php
+            if (isset($products)) {
+                foreach ($products as $product) { ?>
+                    <tr>
+                        <th scope="row" class="text-center"><?php echo $product['id'] ?></th>
+                        <th scope="row" class="text-center"><?php echo $product['name'] ?></th>
+                        <td class="text-center">
+                            <img src="public/img/<?php echo $product['image'] ?>" alt="" height="100px" style="object-fit: cover" />
+                        </td>
+                        <td class="text-center"><?php echo $product['price'] ?></td>
+                        <td class="text-center"><?php echo $product['category'] ?></td>
+                        <td class="text-center"><?php echo $product['description'] ?></td>
+                        <td class="text-center"><?php echo $product['status'] ?></td>
+                        <td class="text-center">
+                            <a type="button" 
+                            href = "index.php?controller=adminproduct&action=edit&id=<?php echo $product['id'] ?>"
+                            name="edit" >
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="index.php?controller=adminproduct&action=delete&id=<?php echo $product['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+
+            <?php }
+            } else {
                 echo "Không có sản phẩm";
             } ?>
         </tbody>
@@ -59,20 +64,20 @@
                     <form method="post" action="index.php?controller=adminproduct&action=add" enctype="multipart/form-data">
                         <div class="mb-2">
                             <label for="exampleInput" class="form-label">Tên sản phẩm</label>
-                            <input type="text" class="form-control" name="name_product">
+                            <input type="text" class="form-control" name="name_product" required>
                         </div>
                         <div class="mb-2">
                             <label for="" class="form-label">Ảnh</label>
-                            <input type="file" class="form-control" name="image">
-                            <img class="mt-2" src="" width="250px" style="object-fit: cover;" height="250px" id="img"  />
+                            <input type="file" class="form-control" name="image" required>
+                            <img class="mt-2" src="" width="250px" style="object-fit: cover;" height="250px" id="img" />
                         </div>
                         <div class="mb-2">
                             <label class="form-check-label" for="exampleCheck1">Giá</label>
-                            <input type="text" class="form-control" id="exampleCheck1" name="price">
+                            <input type="text" class="form-control" id="exampleCheck1" name="price" required>
                         </div>
                         <div class="mb-2">
                             <label class="form-check-label" for="exampleCheck1">Danh mục</label>
-                            <select class="form-select" aria-label="Default select example" name="category_id">
+                            <select class="form-select" aria-label="Default select example" name="category_id" required>
                                 <option selected>Chọn danh mục</option>
                                 <?php foreach ($categories as $category) : ?>
                                     <option value="<?php echo $category['id'] ?>"><?php echo $category['name'] ?></option>
@@ -81,11 +86,11 @@
                         </div>
                         <div class="mb-2">
                             <label class="form-check-label" for="exampleCheck1">Mô tả</label>
-                            <input type="text" class="form-control" id="exampleCheck1" name="description">
+                            <input type="text" class="form-control" id="exampleCheck1" name="description" required>
                         </div>
                         <div class="mb-2">
                             <label class="form-check-label" for="exampleCheck1">Danh mục</label>
-                            <select class="form-select" aria-label="Default select example" name="status_id">
+                            <select class="form-select" aria-label="Default select example" name="status_id" required>
                                 <option selected>Chọn trạng thái sản phẩm</option>
                                 <?php foreach ($statuses as $status) : ?>
                                     <option value="<?php echo $status['id'] ?>"><?php echo $status['name'] ?></option>
@@ -98,5 +103,7 @@
             </div>
         </div>
     </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
 </div>
 <?php require_once 'public/layouts/admin/footer.php' ?>
