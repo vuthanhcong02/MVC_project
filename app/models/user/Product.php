@@ -75,13 +75,13 @@ class Product {
     }
     public function getAllProductTrendy(){
         $conn = new DatabaseConnection();
-        $sql="SELECT * FROM product WHERE status = 'trendy'";
+        $sql="SELECT * FROM product WHERE status_id = '2'";
         $trendy = $conn->pdo($sql)->fetchAll();
         return $trendy;
     }
     public function getAllProductNew(){
         $conn = new DatabaseConnection();
-        $sql="SELECT * FROM product WHERE status = 'new'";
+        $sql="SELECT * FROM product WHERE status_id = '3'";
         $product_new = $conn->pdo($sql)->fetchAll();
         return $product_new;
     }

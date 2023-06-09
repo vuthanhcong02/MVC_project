@@ -19,3 +19,15 @@ function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
+const input = document.querySelector('input[type="file"]');
+input.addEventListener('change', function() {
+        // Đọc file hình ảnh được chọn
+const file = this.files[0];
+const reader = new FileReader();
+reader.addEventListener('load', function() {
+            // Hiển thị hình ảnh được chọn
+const img = document.getElementById('img');
+img.src = reader.result;
+});
+reader.readAsDataURL(file);
+});
