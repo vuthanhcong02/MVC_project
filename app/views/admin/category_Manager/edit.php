@@ -3,7 +3,7 @@
 
 <div class="container my-3">
     <a href="index.php?controller=admincategory&action=index" class="btn btn-primary mb-4"><-Quay lại</a>
-    <form method="post" action="index.php?controller=admincategory&action=update" enctype="multipart/form-data">
+    <form method="post" action="index.php?controller=adminaccount&action=update" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $category['id']?>">
         <div class="mb-2">
             <label for="exampleInput" class="form-label">Tên danh mục</label>

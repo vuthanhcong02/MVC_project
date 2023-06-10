@@ -25,7 +25,7 @@
     <a href="index.php?controller=admincategory&action=index" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Category</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shopping-basket fa-fw"></i>  Orders</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Users</a>
+    <a href="index.php?controller=adminaccount&action=index" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Users</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i> Messenger</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
