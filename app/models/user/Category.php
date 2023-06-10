@@ -28,9 +28,14 @@ class Category{
         $this->created_at = $created_at;
     }
     public function getAllCategory(){
-        $conn = new DatabaseConnection();
-        $sql="SELECT * FROM category";
-        $categories = $conn->pdo($sql)->fetchAll();
-        return $categories;
+        $database = new DatabaseConnection();
+        $conn = $database->getConnection();
+        if($conn){
+            $sql="SELECT * FROM category ORDER BY id DESC";
+            $categories = $database->pdo($sql)->fetchAll();
+            return $categories;
+        }
+       
     }
+ 
 }

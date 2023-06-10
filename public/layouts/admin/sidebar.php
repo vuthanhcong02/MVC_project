@@ -20,9 +20,9 @@
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Product</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Category</a>
+    <a href="index.php?controller=admin&action=index" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="index.php?controller=adminproduct&action=index" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Product</a>
+    <a href="index.php?controller=admincategory&action=index" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Category</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-shopping-basket fa-fw"></i>  Orders</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Users</a>
