@@ -48,7 +48,7 @@
 
                     </td>
                     <td>
-                        <a href="index.php?controller=adminorder&action=edit&id=<?php echo $order['ma_hd'] ?>" type="button">
+                        <a href="index.php?controller=adminorder&action=edit&id=<?php echo $order['id_sp'] ?>" type="button">
                             Update
                         </a>
                     </td>
