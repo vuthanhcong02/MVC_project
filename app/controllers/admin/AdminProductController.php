@@ -1,16 +1,27 @@
 <?php
+session_start();
 require_once 'app/models/admin/Product.php';
 require_once 'app/models/user/Category.php';
 require_once 'app/models/admin/ProductStatus.php';
 class AdminProductController{
     public function index(){
-        $productModelAdmin = new Product();
-        $products = $productModelAdmin->getAllProducts();
-        $categoryModelUser= new Category();
-        $categories = $categoryModelUser->getAllCategory();
-        $productStatusModel = new ProductStatus();
-        $statuses = $productStatusModel->getAllProductStatus();
-        include 'app/views/admin/product_Manager/index.php';
+        if ($_SESSION['user'] && $_SESSION['user']['role'] == 'admin') {
+            // Trang admin chỉ được truy cập khi đăng nhập với vai trò "admin"
+            // Thực hiện các xử lý cho trang admin ở đây
+            $productModelAdmin = new Product();
+            $products = $productModelAdmin->getAllProducts();
+            $categoryModelUser= new Category();
+            $categories = $categoryModelUser->getAllCategory();
+            $productStatusModel = new ProductStatus();
+            $statuses = $productStatusModel->getAllProductStatus();
+            include 'app/views/admin/product_Manager/index.php';
+
+        } else {
+            // Nếu người dùng chưa đăng nhập hoặc không có vai trò "admin", chuyển hướng đến trang đăng nhập
+            header('Location: index.php?controller=login&action=login');
+            exit();
+        }
+      
     }
     public function add(){
         if(isset($_POST['add'])){

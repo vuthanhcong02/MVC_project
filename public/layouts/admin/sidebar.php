@@ -1,4 +1,5 @@
 <?php
+session_start();
 $currentUrl = basename($_SERVER['REQUEST_URI']);
 ?>
 <!-- Top container -->
@@ -11,10 +12,12 @@ $currentUrl = basename($_SERVER['REQUEST_URI']);
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="https://tse1.mm.bing.net/th?id=OIP.lJZjd0k4tIcAlj9dOhJrowHaHa&pid=Api&P=0&h=180" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Mike</strong></span><br>
+      <?php if ($_SESSION['user']){ ?>
+      <span>Welcome, <strong><?php echo $_SESSION['user']['username']; ?></strong></span><br>
+      <?php } ?>
     </div>
   </div>
   <hr>
@@ -50,7 +53,7 @@ $currentUrl = basename($_SERVER['REQUEST_URI']);
     <a href="#" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == '#') echo 'w3-blue'; ?>">
       <i class="fa fa-bell fa-fw"></i> News
     </a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i> Log out</a>
+    <a href="index.php?controller=logout&action=logout" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i> Log out</a>
   </div>
 </nav>
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

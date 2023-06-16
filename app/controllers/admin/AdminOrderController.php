@@ -1,10 +1,21 @@
 <?php
+session_start();
 require_once 'app/models/admin/Order.php';
 class AdminOrderController{
     public function index(){
-        $orderModel = new Order();
-        $orders = $orderModel->getAllOrders();
-        include 'app/views/admin/order_Manager/index.php';
+        if ($_SESSION['user'] && $_SESSION['user']['role'] == 'admin') {
+            // Trang admin chỉ được truy cập khi đăng nhập với vai trò "admin"
+            // Thực hiện các xử lý cho trang admin ở đây
+            $orderModel = new Order();
+            $orders = $orderModel->getAllOrders();
+            include 'app/views/admin/order_Manager/index.php';
+
+        } else {
+            // Nếu người dùng chưa đăng nhập hoặc không có vai trò "admin", chuyển hướng đến trang đăng nhập
+            header('Location: index.php?controller=login&action=login');
+            exit();
+        }
+        
     }
     public function updateStatus(){
         $id = $_POST['id'];

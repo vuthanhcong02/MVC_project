@@ -1,11 +1,22 @@
 <?php
+session_start();
 require_once 'app/models/admin/AdminCategory.php';
 require_once 'app/models/user/Category.php';
 class AdminCategoryController{
     public function index(){
-        $categoryModelUser = new Category();
-        $categories = $categoryModelUser->getAllCategory();
-        include 'app/views/admin/category_Manager/index.php';
+        if ($_SESSION['user'] && $_SESSION['user']['role'] == 'admin') {
+            // Trang admin chỉ được truy cập khi đăng nhập với vai trò "admin"
+            // Thực hiện các xử lý cho trang admin ở đây
+            $categoryModelUser = new Category();
+            $categories = $categoryModelUser->getAllCategory();
+            include 'app/views/admin/category_Manager/index.php';
+
+        } else {
+            // Nếu người dùng chưa đăng nhập hoặc không có vai trò "admin", chuyển hướng đến trang đăng nhập
+            header('Location: index.php?controller=login&action=login');
+            exit();
+        }
+        
     }
     public function add(){
         // if(isset($_SERVER['REQUEST_METHOD']) == 'POST'){
