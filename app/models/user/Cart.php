@@ -115,4 +115,20 @@ class Cart
         }
       }
     }
+    public function showOrder(){
+        $database = new DatabaseConnection();
+        $conn = $database->getConnection();
+        if($conn){
+            $sql = "SELECT chi_tiet_hoa_don.size,chi_tiet_hoa_don.so_luong,chi_tiet_hoa_don.ma_sp as id_sp,chi_tiet_hoa_don.id as id_chi_tiet_hd,
+            hoa_don.ma_hd,hoa_don.ngay_lam_hd,hoa_don.dia_chi_gh,hoa_don.fullname,hoa_don.phone,hoa_don.email,hoa_don.note,
+            product.id,product.name,product.image,product.price,
+            order_status.status ,order_status.id_status
+    
+                            FROM `chi_tiet_hoa_don` JOIN hoa_don ON chi_tiet_hoa_don.id_hoadon = hoa_don.ma_hd 
+                            JOIN product ON chi_tiet_hoa_don.ma_sp = product.id 
+                            JOIN order_status ON chi_tiet_hoa_don.id_order_status = order_status.id_status";
+            $orders = $database->pdo($sql)->fetchAll();
+            return $orders;
+        }
+    }
 }

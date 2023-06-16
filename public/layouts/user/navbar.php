@@ -33,7 +33,9 @@
                                 <a href="index.php?controller=checkout&action=index" class="dropdown-item">Checkout</a>
                             </div>
                         </div>
-                        <a href="index.php?controller=contact&action=index" class="nav-item nav-link">Contact</a>
+                        <a href="index.php?controller=order&action=show" class="nav-item nav-link <?php if(isset($_GET['controller']) && $_GET['controller'] == 'order' && isset($_GET['action']) && $_GET['action'] == 'show') echo 'active' ?>">Ordered</a>
+
+                        <a href="index.php?controller=contact&action=index" class="nav-item nav-link <?php if(isset($_GET['controller']) && $_GET['controller'] == 'contact' && isset($_GET['action']) && $_GET['action'] == 'index') echo 'active' ?>">Contact</a>
                     </div>
 
                     <div class="navbar-nav ml-auto py-0">

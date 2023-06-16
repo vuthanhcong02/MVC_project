@@ -67,6 +67,7 @@ class CartController{
                 $cartModel->createOrderDetail($orderId, $productId, $size,$quantity,$price);
             }
             unset($_SESSION['cart']);
+            header('location: index.php?controller=order&action=show');
         }
     }
 }
