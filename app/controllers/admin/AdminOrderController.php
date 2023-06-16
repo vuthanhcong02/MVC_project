@@ -21,4 +21,10 @@ class AdminOrderController{
         $order = $orderModel->getOrderById($id);
         include 'app/views/admin/order_Manager/edit.php';
     }
+    public function delete(){
+        $id = $_GET['id'];
+        $orderModel = new Order();
+        $orderModel->deleteOrder($id);
+        header('Location: index.php?controller=adminorder&action=index');
+    }
 }

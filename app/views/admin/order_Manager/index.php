@@ -48,11 +48,11 @@
 
                     </td>
                     <td>
-                        <a href="index.php?controller=adminorder&action=edit&id=<?php echo $order['id_sp'] ?>" type="button">
+                        <a href="index.php?controller=adminorder&action=edit&id=<?php echo $order['id_chi_tiet_hd'] ?>" type="button">
                             Update
                         </a>
                     </td>
-                    <td><a href="">Xóa</a></td>
+                    <td><a href="index.php?controller=adminorder&action=delete&id=<?php echo $order['id_chi_tiet_hd'] ?>" type="button" onclick="return confirm('Are you sure?')">Xóa</a></td>
                 </tr>
             <?php } ?>
         </tbody>
