@@ -11,4 +11,13 @@ class Account{
         }
 
     }
+    public function newAccount($username,$email,$password){
+        $database = new DatabaseConnection();
+        $conn = $database->getConnection();
+        if($conn){
+            $sql= "INSERT INTO customers (username,email,password) VALUES (:username,:email,:password)";
+            $account = $database->pdo($sql,[':username'=>$username,':email'=>$email,':password'=>$password])->fetch();
+            return $account;
+        }
+    }
 }

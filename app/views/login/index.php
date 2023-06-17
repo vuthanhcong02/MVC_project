@@ -42,7 +42,7 @@
                 </p>
             </form>
             <div id="create-account-wrap">
-                <p>Not a member? <a href="#">Create Account</a>
+                <p>Not a member? <a href="index.php?controller=register&action=register">Create Account</a>
                 <p>
             </div><!--create-account-wrap-->
         </div>
