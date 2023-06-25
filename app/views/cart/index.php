@@ -33,7 +33,7 @@ $subTotal = $cartModel->getSubTotal();
                 </thead>
                 <tbody class="align-middle">
                     <?php
-                    if (isset($_SESSION['cart'])) 
+                    if (!empty($_SESSION['cart'])) 
                             foreach ($carts as $item) {?>
                                 <tr>
                                     <td class="align-middle"><img src="public/img/<?php echo $item['image']; ?>" alt="" style="width: 50px;"><?php echo $item['name']; ?></td>
@@ -59,9 +59,14 @@ $subTotal = $cartModel->getSubTotal();
                                     <td class="align-middle"><?php echo PriceFormatter::formatPrice($item['price'] * $item['quantity']); ?></td>
                                     <td class="align-middle"><a href="index.php?controller=cart&action=del&id=<?php echo $item['productId'] ?>" class="btn btn-sm btn-primary"><i class="fa fa-times"></i></a></td>
                                 </tr>
-                            <?php } ?>
+                    <?php }else{ ?>
+                        <tr>
+                            <td colspan="8" class="align-middle"><h5>Cart is empty</h5></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
+            <a href="index.php?controller=shop&action=index" class="btn btn-primary py-3 px-5 mt-3">Continue Shopping</a>
         </div>
         <div class="col-lg-4">
             <form class="mb-5" action="">
@@ -91,10 +96,11 @@ $subTotal = $cartModel->getSubTotal();
                         <h5 class="font-weight-bold">Total</h5>
                         <h5 class="font-weight-bold"><?php echo PriceFormatter::formatPrice($subTotal + 5); ?></h5>
                     </div>
-                    <?php if(!empty($_SESSION['cart'])||isset($_SESSION['user'])){?>
+                    <?php if(!empty($_SESSION['cart'])&&isset($_SESSION['user'])){?>
                         <a href="index.php?controller=checkout&action=index" class="text-decoration-none"><button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button></a>
                     <?php }else{
                         echo '<a href="index.php?controller=checkout&action=index" class="text-decoration-none"><button class="btn btn-block btn-primary my-3 py-3" disabled>Proceed To Checkout</button></a>';
+                        echo '<p>Hãy đăng nhập để tiến hành thanh toán</p>';
                     }?>
                 </div>
             </div>

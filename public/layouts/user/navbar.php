@@ -39,8 +39,13 @@
                     </div>
 
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.php?controller=login&action=login" class="nav-item nav-link">Login</a>
-                        <a href="index.php?controller=register&action=register" class="nav-item nav-link">Register</a>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                            <a href="index.php?controller=login&action=login" class="nav-item nav-link">Login</a>
+                            <a href="index.php?controller=register&action=register" class="nav-item nav-link">Register</a>
+                    <?php } else{ ?>
+                            <a class="nav-item nav-link">Hi,<?php echo $_SESSION['user']['username'] ?></a>
+                            <a href="index.php?controller=logoutUser&action=index" class="nav-item nav-link">Logout</a>
+                        <?php } ?>
                     </div>
                 </div>
             </nav>
