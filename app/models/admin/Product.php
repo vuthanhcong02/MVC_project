@@ -9,7 +9,7 @@ class Product{
                     FROM product 
                     JOIN category ON product.category_id = category.id 
                     JOIN product_status ON product.status_id = product_status.id
-                    ORDER BY product.id DESC LIMIT 7";
+                    ORDER BY product.id DESC";
            $products = $database->pdo($sql)->fetchAll();
            return $products; 
         }

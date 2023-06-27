@@ -49,7 +49,9 @@ $currentUrl = basename($_SERVER['REQUEST_URI']);
     <a href="index.php?controller=adminaccount&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=adminaccount&action=index') echo 'w3-blue'; ?>">
       <i class="fa fa-users fa-fw"></i> Users
     </a>
-
+    <a href="index.php?controller=home&action=index" class="w3-bar-item w3-button w3-padding" >
+      <i class="fa fa-users fa-fw"></i> Home Page
+    </a>
     <a href="#" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == '#') echo 'w3-blue'; ?>">
       <i class="fa fa-bell fa-fw"></i> News
     </a>
