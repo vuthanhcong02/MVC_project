@@ -24,15 +24,21 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    <?php foreach($orders as $order) {?>
+                    <?php if(!empty($orders)) {
+                        foreach($orders as $order) {?>
+                            <tr>
+                                <td><?php echo $order['name'] ?></td>
+                                <td><?php echo $order['size'] ?></td>
+                                <td><?php echo $order['price'] ?></td>
+                                <td><?php echo $order['so_luong'] ?></td>
+                                <td><?php echo $order['so_luong']*$order['price'] ?></td>
+                                <td><?php echo $order['ngay_lam_hd'] ?></td>
+                                <td><?php echo $order['status'] ?></td>
+                            </tr>
+                    <?php } 
+                        }else { ?>
                     <tr>
-                        <td><?php echo $order['name'] ?></td>
-                        <td><?php echo $order['size'] ?></td>
-                        <td><?php echo $order['price'] ?></td>
-                        <td><?php echo $order['so_luong'] ?></td>
-                        <td><?php echo $order['so_luong']*$order['price'] ?></td>
-                        <td><?php echo $order['ngay_lam_hd'] ?></td>
-                        <td><?php echo $order['status'] ?></td>
+                        <td colspan="8">Chưa có đơn hàng</td>
                     </tr>
                     <?php } ?>
                 </tbody>

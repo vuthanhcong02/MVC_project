@@ -3,7 +3,7 @@ session_start();
 require_once 'database/Connect.php';
 class Cart
 {
-    public function addToCart($productId, $name, $price, $quantity, $size, $color, $image)
+    public function addToCart($productId, $name, $price, $quantity, $size, $color, $image, $user_id)
     {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
@@ -35,6 +35,7 @@ class Cart
                 'size' => $size,
                 'color' => $color,
                 'image' => $image,
+                'user_id' =>$user_id,
             ];
         }
     }
@@ -93,13 +94,13 @@ class Cart
         }
     }
     // Các phương thức khác để cập nhật hoặc xóa sản phẩm trong giỏ hàng
-    public function createOrder($fullname, $email, $phone, $address, $note,$date){
+    public function createOrder($fullname, $email, $phone, $address, $note,$date, $user_id){
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
         if($conn){
-            $sql = "INSERT INTO hoa_don(fullname, email, phone, dia_chi_gh, note, ngay_lam_hd) 
-                VALUES(:fullname, :email, :phone, :address, :note, :date)";
-            $database->pdo($sql,['fullname'=>$fullname, 'email'=>$email, 'phone'=>$phone, 'address'=>$address, 'note'=>$note, 'date'=>$date]);
+            $sql = "INSERT INTO hoa_don(fullname, email, phone, dia_chi_gh, note, ngay_lam_hd,user_id) 
+                VALUES(:fullname, :email, :phone, :address, :note, :date, :user_id)";
+            $database->pdo($sql,['fullname'=>$fullname, 'email'=>$email, 'phone'=>$phone, 'address'=>$address, 'note'=>$note, 'date'=>$date, 'user_id'=>$user_id]);
             $orderId = $conn->lastInsertId();
             return $orderId;
         }
@@ -115,19 +116,19 @@ class Cart
         }
       }
     }
-    public function showOrder(){
+    public function showOrder($userId){
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
         if($conn){
             $sql = "SELECT chi_tiet_hoa_don.size,chi_tiet_hoa_don.so_luong,chi_tiet_hoa_don.ma_sp as id_sp,chi_tiet_hoa_don.id as id_chi_tiet_hd,
-            hoa_don.ma_hd,hoa_don.ngay_lam_hd,hoa_don.dia_chi_gh,hoa_don.fullname,hoa_don.phone,hoa_don.email,hoa_don.note,
+            hoa_don.ma_hd,hoa_don.ngay_lam_hd,hoa_don.dia_chi_gh,hoa_don.fullname,hoa_don.phone,hoa_don.email,hoa_don.note,hoa_don.user_id,
             product.id,product.name,product.image,product.price,
             order_status.status ,order_status.id_status
     
                             FROM `chi_tiet_hoa_don` JOIN hoa_don ON chi_tiet_hoa_don.id_hoadon = hoa_don.ma_hd 
                             JOIN product ON chi_tiet_hoa_don.ma_sp = product.id 
-                            JOIN order_status ON chi_tiet_hoa_don.id_order_status = order_status.id_status";
-            $orders = $database->pdo($sql)->fetchAll();
+                            JOIN order_status ON chi_tiet_hoa_don.id_order_status = order_status.id_status  WHERE hoa_don.user_id = :user_id ORDER BY hoa_don.ngay_lam_hd DESC ";
+            $orders = $database->pdo($sql,['user_id'=>$userId])->fetchAll();
             return $orders;
         }
     }

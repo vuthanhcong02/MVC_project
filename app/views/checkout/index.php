@@ -25,6 +25,7 @@
                         <div class="col-md-6 form-group">
                             <label>Full Name</label>
                             <input class="form-control" type="text" placeholder="John" name="fullname" required>
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>

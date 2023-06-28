@@ -23,8 +23,9 @@ class CartController{
             $size = $_POST['size'];
             $color = $_POST['color'];
             $quantity = $_POST['quantity'];
+            $user_id = $_POST['user_id'];
             $cartModel = new Cart();
-            $cartModel->addToCart($id, $name, $price,$quantity, $size, $color, $image);
+            $cartModel->addToCart($id, $name, $price,$quantity, $size, $color, $image, $user_id);
             $carts= $cartModel->getCartItems();
        
             header('Location: index.php?controller=cart&action=index');
@@ -48,15 +49,16 @@ class CartController{
     }
     public function checkout(){
         if(($_SERVER['REQUEST_METHOD'] == 'POST')){
-            if(isset($_POST['fullname'])&&isset($_POST['address'])&&isset($_POST['phone'])&&isset($_POST['email'])){
+            if(isset($_POST['fullname'])&&isset($_POST['address'])&&isset($_POST['phone'])&&isset($_POST['email'])&&isset($_POST['user_id'])){
                 $fullname = $_POST['fullname'];
                 $address = $_POST['address'];
                 $phone = $_POST['phone'];
                 $email = $_POST['email'];
+                $user_id = $_POST['user_id'];
                 $date = date('Y-m-d H:i:s');
                 $note = $_POST['note'];
                 $cartModel = new Cart();
-                $orderId = $cartModel->createOrder($fullname, $email, $phone, $address, $note,$date);
+                $orderId = $cartModel->createOrder($fullname, $email, $phone, $address, $note,$date, $user_id);
             }
             $carts = $cartModel->getCartItems();
             foreach ($carts as $item) {

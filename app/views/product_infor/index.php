@@ -1,4 +1,5 @@
-<?php include 'public/layouts/user/header.php' ?>
+<?php 
+include 'public/layouts/user/header.php' ?>
 <?php include 'public/layouts/user/navbar.php' ?>
 <div class="container-fluid py-5">
     <form action="index.php?controller=cart&action=add" method="post" id="myForm">
@@ -6,6 +7,11 @@
         <input type="hidden" name="name" value="<?php echo $product['name'] ?>">
         <input type="hidden" name="price" value="<?php echo $product['price'] ?>">
         <input type="hidden" name="image" value="<?php echo $product['image'] ?>">
+        <?php if(isset($_SESSION['user'])){ ?>
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id'] ?>">
+        <?php } else { ?>
+            <input type="hidden" name="user_id" value="">
+        <?php } ?>
         <div class="row px-xl-5">
             <div class="col-lg-5 pb-5">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
