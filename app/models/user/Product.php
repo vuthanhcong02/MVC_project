@@ -67,11 +67,17 @@ class Product {
     public function setStatus($status){
         $this->status = $status;
     }
-    public function getAllProduct(){
+    public function getAllProduct($perPage,$offset){
         $conn = new DatabaseConnection();
-        $sql="SELECT *,product.name as product_name FROM product";
-        $products = $conn->pdo($sql)->fetchAll();
+        $sql="SELECT *,product.name as product_name FROM product LIMIT :perPage OFFSET :offset";
+        $products = $conn->pdo($sql,['perPage'=>$perPage,'offset'=>$offset])->fetchAll();
         return $products;
+    }
+    public function getTotalProduct(){
+        $database = new DatabaseConnection();
+        $sql="SELECT COUNT(*) as total FROM product";
+        $totalProduct = $database->pdo($sql)->fetch();
+        return $totalProduct['total'];
     }
     public function getAllProductTrendy(){
         $conn = new DatabaseConnection();

@@ -4,6 +4,16 @@ require_once 'app/models/user/Category.php';
 class ShopController {
     public function index(){
         $productModel = new Product();
+        $totalProduct = $productModel->getTotalProduct();
+        $perPage = 6;
+        $totalPage = ceil($totalProduct/$perPage);
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+          } else {
+            $page = 1;
+          }
+        $offset = ($page - 1) * $perPage;
+
         if(isset($_GET['id'])){
             $category_id = $_GET['id'];
             $products = $productModel->getProductByCategory($category_id);
@@ -38,7 +48,7 @@ class ShopController {
             
         }
         else{
-            $products = $productModel->getAllProduct();  
+            $products = $productModel->getAllProduct($perPage,$offset);  
         }
         $categoryModel = new Category();
         $categories = $categoryModel->getAllCategory();

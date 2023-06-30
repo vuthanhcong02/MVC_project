@@ -155,21 +155,28 @@ require_once 'helpers/PriceFormatter.php';
                 <div class="col-12 pb-1">
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center mb-3">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" aria-label="Previous">
+                            <?php if ($page > 1) { ?>
+                            <li class="page-item">
+                                <a class="page-link" href="index.php?controller=shop&action=index&page=<?php echo $page - 1 ?>" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                             </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <?php } ?>
+                            <?php for ($i = 1; $i <= $totalPage; $i++) { ?>
+                                <?php if($i == $page){ ?>
+                                <li class="page-item active"><a class="page-link" href="index.php?controller=shop&action=index&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                <?php } else{ ?>
+                                <li class="page-item"><a class="page-link" href="index.php?controller=shop&action=index&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                            <?php } }?>
+                            <?php if ($page < $totalPage) { ?>
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                                <a class="page-link" href="index.php?controller=shop&action=index&page=<?php echo $page + 1 ?>" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                     <span class="sr-only">Next</span>
                                 </a>
                             </li>
+                            <?php } ?>
                         </ul>
                     </nav>
                 </div>
