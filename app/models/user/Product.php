@@ -79,17 +79,29 @@ class Product {
         $totalProduct = $database->pdo($sql)->fetch();
         return $totalProduct['total'];
     }
-    public function getAllProductTrendy(){
+    public function getAllProductTrendy($perPage_Trendy,$offset_Trendy){
         $conn = new DatabaseConnection();
-        $sql="SELECT * FROM product WHERE status_id = '2'";
-        $trendy = $conn->pdo($sql)->fetchAll();
+        $sql="SELECT * FROM product WHERE status_id = '2' LIMIT :perPage OFFSET :offset";
+        $trendy = $conn->pdo($sql,['perPage'=>$perPage_Trendy,'offset'=>$offset_Trendy])->fetchAll();
         return $trendy;
     }
-    public function getAllProductNew(){
+    public function getTotalProductTrendy(){
         $conn = new DatabaseConnection();
-        $sql="SELECT * FROM product WHERE status_id = '3'";
-        $product_new = $conn->pdo($sql)->fetchAll();
+        $sql="SELECT COUNT(*) as total FROM product WHERE status_id = '2'";
+        $totalProduct = $conn->pdo($sql)->fetch();
+        return $totalProduct['total'];
+    }
+    public function getAllProductNew($perPage_New,$offset_New){
+        $conn = new DatabaseConnection();
+        $sql="SELECT * FROM product WHERE status_id = '3' LIMIT :perPage OFFSET :offset";
+        $product_new = $conn->pdo($sql,['perPage'=>$perPage_New,'offset'=>$offset_New])->fetchAll();
         return $product_new;
+    }
+    public function getTotalProductNew(){
+        $conn = new DatabaseConnection();
+        $sql="SELECT COUNT(*) as total FROM product WHERE status_id = '3'";
+        $totalProduct = $conn->pdo($sql)->fetch();
+        return $totalProduct['total'];
     }
     public function getProductById($id){
         $conn = new DatabaseConnection();

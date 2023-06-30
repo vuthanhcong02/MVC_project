@@ -44,7 +44,7 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">15 Products</p>
-                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                <a class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" src="public/img/men.jpg" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">Men's</h5>
@@ -53,7 +53,7 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">15 Products</p>
-                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                <a class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" src="public/img/women.jpg" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">Women's dresses</h5>
@@ -62,7 +62,7 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">15 Products</p>
-                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                <a class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" src="public/img/baby.jpg" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">Baby's dresses</h5>
@@ -71,7 +71,7 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">15 Products</p>
-                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                <a class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" src="public/img/cat-4.jpg" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">Accerssories</h5>
@@ -80,7 +80,7 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">15 Products</p>
-                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                <a class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" src="public/img/bags.jpg" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">Bags</h5>
@@ -89,7 +89,7 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">15 Products</p>
-                <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                <a class="cat-img position-relative overflow-hidden mb-3">
                     <img class="img-fluid" src="public/img/shoes.jpg" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">Shoes</h5>
@@ -109,7 +109,7 @@
                 <div class="position-relative" style="z-index: 1;">
                     <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Spring Collection</h1>
-                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                    <a href="index.php?controller=shop&action=index" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
                 <div class="position-relative" style="z-index: 1;">
                     <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Winter Collection</h1>
-                    <a href="" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
+                    <a href="index.php?controller=shop&action=index" class="btn btn-outline-primary py-md-2 px-md-3">Shop Now</a>
                 </div>
             </div>
         </div>
@@ -143,18 +143,47 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"><?php echo $item['name'] ?></h6>
                         <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del><?php echo PriceFormatter::formatPrice($item['price']) ?></del></h6>
+                            <h6><del>$123.00</del></h6>
+                            <h6 class="text-muted ml-2"><?php echo PriceFormatter::formatPrice($item['price']) ?></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="index.php?controller=product&action=detail&id=<?php echo $item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <a href="index.php?controller=product&action=detail&id=<?php echo $item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>
             </div>
         <?php } ?>
     </div>
+</div>
+<div class="col-12 pb-1">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mb-3">
+            <?php if ($page_Trendy > 1) { ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?controller=home&action=index&pageTrendy=<?php echo $page_Trendy - 1 ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php for ($i = 1; $i <= $totalPage_Trendy; $i++) { ?>
+                <?php if ($i == $page_Trendy) { ?>
+                    <li class="page-item active"><a class="page-link" href="index.php?controller=home&action=index&pageTrendy=<?php echo $i ?>"><?php echo $i ?></a></li>
+                <?php } else { ?>
+                    <li class="page-item"><a class="page-link" href="index.php?controller=home&action=index&pageTrendy=<?php echo $i ?>"><?php echo $i ?></a></li>
+            <?php }
+            } ?>
+            <?php if ($page_Trendy < $totalPage_Trendy) { ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?controller=home&action=index&pageTrendy=<?php echo $page_Trendy + 1 ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            <?php } ?>
+        </ul>
+    </nav>
 </div>
 <!-- Products End -->
 
@@ -202,12 +231,41 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="index.php?controller=product&action=detail&id=<?php echo $item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <a href="index.php?controller=product&action=detail&id=<?php echo $item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>
             </div>
-      <?php } ?>
+        <?php } ?>
     </div>
+</div>
+<div class="col-12 pb-1">
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mb-3">
+            <?php if ($page_New > 1) { ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?controller=home&action=index&pageNew=<?php echo $page_New - 1 ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            <?php } ?>
+            <?php for ($i = 1; $i <= $totalPage_New; $i++) { ?>
+                <?php if ($i == $page_New) { ?>
+                    <li class="page-item active"><a class="page-link" href="index.php?controller=home&action=index&pageNew=<?php echo $i ?>"><?php echo $i ?></a></li>
+                <?php } else { ?>
+                    <li class="page-item"><a class="page-link" href="index.php?controller=home&action=index&pageNew=<?php echo $i ?>"><?php echo $i ?></a></li>
+            <?php }
+            } ?>
+            <?php if ($page_New < $totalPage_New) { ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?controller=home&action=index&pageNew=<?php echo $page_New + 1 ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            <?php } ?>
+        </ul>
+    </nav>
 </div>
 <!-- Products End -->
 
