@@ -72,4 +72,8 @@ class CartController{
             header('location: index.php?controller=order&action=show');
         }
     }
+    public function filter(){
+        $price = $_POST['price'];
+        echo $price;
+    }
 }

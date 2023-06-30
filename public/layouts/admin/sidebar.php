@@ -34,19 +34,19 @@ $currentUrl = basename($_SERVER['REQUEST_URI']);
       <i class="fa fa-users fa-fw"></i> Overview
     </a>
 
-    <a href="index.php?controller=adminproduct&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=adminproduct&action=index') echo 'w3-blue'; ?>">
+    <a href="index.php?controller=AdminProduct&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=AdminProduct&action=index') echo 'w3-blue'; ?>">
       <i class="fa fa-eye fa-fw"></i> Product
     </a>
 
-    <a href="index.php?controller=admincategory&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=admincategory&action=index') echo 'w3-blue'; ?>">
+    <a href="index.php?controller=AdminCategory&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=AdminCategory&action=index') echo 'w3-blue'; ?>">
       <i class="fa fa-users fa-fw"></i> Category
     </a>
 
-    <a href="index.php?controller=adminorder&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=adminorder&action=index') echo 'w3-blue'; ?>">
+    <a href="index.php?controller=AdminOrder&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=AdminOrder&action=index') echo 'w3-blue'; ?>">
       <i class="fa fa-shopping-basket fa-fw"></i> Orders
     </a>
 
-    <a href="index.php?controller=adminaccount&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=adminaccount&action=index') echo 'w3-blue'; ?>">
+    <a href="index.php?controller=AdminAccount&action=index" class="w3-bar-item w3-button w3-padding <?php if ($currentUrl == 'index.php?controller=AdminAccount&action=index') echo 'w3-blue'; ?>">
       <i class="fa fa-users fa-fw"></i> Users
     </a>
     <a href="index.php?controller=home&action=index" class="w3-bar-item w3-button w3-padding" >

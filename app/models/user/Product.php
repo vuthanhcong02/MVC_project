@@ -69,7 +69,7 @@ class Product {
     }
     public function getAllProduct(){
         $conn = new DatabaseConnection();
-        $sql="SELECT * FROM product";
+        $sql="SELECT *,product.name as product_name FROM product";
         $products = $conn->pdo($sql)->fetchAll();
         return $products;
     }
@@ -101,7 +101,7 @@ class Product {
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
         if($conn){
-            $sql="SELECT * FROM product WHERE category_id=:category_id";
+            $sql="SELECT *,product.name as product_name FROM product WHERE category_id=:category_id";
             $products = $database->pdo($sql,['category_id'=>$category_id])->fetchAll();
             return $products;
         }
@@ -110,12 +110,24 @@ class Product {
         $database = new DatabaseConnection();
         $conn = $database->getConnection();
         if ($conn) {
-            $sql = "SELECT product.id, product.name, product.image, product.price,category.name
+            $sql = "SELECT product.id, product.name as product_name, product.image, product.price,category.name
             FROM product
             JOIN category ON product.category_id = category.id
             WHERE product.name LIKE CONCAT('%', :keyword, '%') OR category.name LIKE CONCAT('%', :keyword1, '%')";
             $products_search = $database->pdo($sql, ['keyword' => $keyword,'keyword1' => $keyword])->fetchAll();
             return $products_search;
         }        
+    }
+    public function getProductByPrice($min_price,$max_price){
+        $database = new DatabaseConnection();
+        $conn = $database->getConnection();
+        if ($conn) {
+            $sql = "SELECT product.id, product.name as product_name, product.image, product.price,category.name
+            FROM product
+            JOIN category ON product.category_id = category.id
+            WHERE :min_price <= product.price AND product.price <= :max_price";
+            $products = $database->pdo($sql, ['min_price' => $min_price, 'max_price' => $max_price])->fetchAll();
+            return $products;
+        }
     }
 }
